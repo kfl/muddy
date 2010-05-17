@@ -33,6 +33,8 @@ MuDDy is an ML interface to the Binary Decision Diagrams package BuDDy
 written in C.  BuDDy is written by Jørn Lind-Nielsen <jln@itu.dk> and
 is available at the homepage:
     http://www.itu.dk/research/buddy
+Newer versions are at:
+    http://sourceforge.net/projects/buddy/
 
 MuDDy is used by a small set of people, and the functionality and
 design of the interface corresponds to these people's need.  Please
