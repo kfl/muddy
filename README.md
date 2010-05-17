@@ -1,6 +1,5 @@
-==============================================================================
 MuDDy - ML interface to BuDDy
------------------------------
+=============================
 
 Homepage:
     http://github.com/kfl/muddy
@@ -24,12 +23,10 @@ This README file contains:
 
 
 
-==============================================================================
-
 1. WHAT IS MUDDY
 ----------------
 
-MuDDy is an ML interface to the Binary Decision Diagrams package BuDDy
+MuDDy is a ML interface to the Binary Decision Diagrams package BuDDy
 written in C.  BuDDy is written by Jørn Lind-Nielsen <jln@itu.dk> and
 is available at the homepage:
     http://www.itu.dk/research/buddy
@@ -44,7 +41,6 @@ MuDDy-SML is the SML interface and MuDDy-OCaml is the O'Caml
 interface.
 
 
-==============================================================================
 2. ML IMPLEMENTATIONS AND PLATFORMS
 -----------------------------------
 
@@ -61,7 +57,7 @@ And we support three platforms:
 The following table gives you an overview of how you can use MuDDy
 with O'Caml, MLtom and Moscow ML:
 
-------------------------------------------------------------------------------
+-----------+-----------+-----------+------------------+-----------------------
 ML-dialect | Linking   | Output    | Operating System | Status
 Moscow ML  | Static    |           |                  | Not supported in mosml
 Moscow ML  | Static    |           |                  | Not supported in mosml
@@ -79,36 +75,33 @@ O'Caml     | Dynamic   | Native    | Linux            | No!
 O'Caml     | Dynamic   | Native    | Windows          | No!
 O'Caml     | Dynamic   | Byte-code | Linux            | No!
 O'Caml     | Dynamic   | Byte-code | Windows          | No!
-------------------------------------------------------------------------------
+-----------+-----------+-----------+------------------+-----------------------
 
 
-
-==============================================================================
 
 3. REQUIREMENTS
 ---------------
 
 ------------------------------------------------------------------------------
-On all platforms:
+###On all platforms:
 
 Make:  MuDDy needs a non-broken make to install.  
 
 We recommend GNU make from Free Software Foundation. GNU make is included in 
-most Linux distributions, and is furthermore available from:
-	      http://www.gnu.org/software/make/make.html
+most Linux distributions, and is furthermore available from: http://www.gnu.org/software/make/make.html
 
 
 ------------------------------------------------------------------------------
-On Linux platforms:
+###On Linux platforms:
 
-       MuDDy is developed under Linux and is not tested on other
-       UNIX-like systems.  However, it should work without problems on
-       other UNIX-like systems.  MuDDy/Mosml requires a UNIX-like system 
-       with Moscow ML dynlib support.  Please report back if you are
-       able to compile MuDDy on other UNIX-like systems.
+MuDDy is developed under Linux and is not tested on other
+UNIX-like systems.  However, it should work without problems on
+other UNIX-like systems.  MuDDy/Mosml requires a UNIX-like system 
+with Moscow ML dynlib support.  Please report back if you are
+able to compile MuDDy on other UNIX-like systems.
 
 ------------------------------------------------------------------------------
-On Windows platform
+###On Windows platform
 
 	MuDDy is (was once) tested on:
           * Windows XP,
@@ -116,7 +109,7 @@ On Windows platform
           * GNU Make included in CygWin
 
 ------------------------------------------------------------------------------
-To use MuDDy-SML:
+###To use MuDDy-SML:
 
 We use Moscow ML's foreign function interface to call the C functions
 in BuDDy.  Therefore, MuDDy can only be used with Moscow ML (version
@@ -131,7 +124,7 @@ from:
       http://www.dina.kvl.dk/~sestoft/mosml.html
 
 ------------------------------------------------------------------------------
-To use MuDDy-OCaml:
+###To use MuDDy-OCaml:
 
 We have tested with various O'Caml versions starting from 3.04 to
 3.11.1. O'Caml is available from: 
@@ -140,12 +133,10 @@ We have tested with various O'Caml versions starting from 3.04 to
 Windows: We have only tested the native distribution.
 
         
-==============================================================================
-
 4. INSTALLATION
 ---------------
 
-4.1. Extracting the sources
+### 4.1. Extracting the sources
 To extract the package:
     tar xzf muddy.tgz
     cd muddy
@@ -154,8 +145,7 @@ The directory you are in now will be refered to as the MuDDy home dir.
 
     Todo: config-file
 
-------------------------------------------------------------------------------
-4.2. Building BuDDy (required)
+### 4.2. Building BuDDy (required)
 
 First build BuDDy with:
     make buddy
@@ -171,8 +161,7 @@ Documentation can be found in:
     buddy/doc/tech.txt
 
 
-------------------------------------------------------------------------------
-4.3. Building MuDDy-SML (optional)
+### 4.3. Building MuDDy-SML (optional)
 
 After BuDDy is build you can build MuDDy-SML:
     make muddy-sml
@@ -196,7 +185,7 @@ The documentation is a README.sml file and three signature files:
 
 
 ------------------------------------------------------------------------------
-4.4 Building MuDDy-OCaml (optional)
+### 4.4 Building MuDDy-OCaml (optional)
 
 After BuDDy is build you can build MuDDy-OCaml:
     make muddy-ocaml
@@ -223,22 +212,19 @@ The documentation is a README.ocaml file and three signature files:
 
 
 
-==============================================================================
-
 5. STARTUP
 ----------
 
-5.1 MuDDy-SML
--------------
+### 5.1 MuDDy-SML
 
 To use the MuDDy-SML package, the Moscow ML runtime system must have
 access to:
-       * The shared library muddy.so 
-       * The compiled ML modules.
+ * The shared library `muddy.so` 
+ * The compiled ML modules.
 
 These files are all available in the MuDDy-SML dir after build.
 
-If the MUDDYHOME environment variable points to the MuDDy home dir, MuDDy
+If the `MUDDYHOME` environment variable points to the MuDDy home dir, MuDDy
 will be able to find the shared library.
 
 Therefore, assuming MuDDy home dir is the current directory, and you
@@ -253,29 +239,28 @@ compiled SML modules can found.  For example, to invoke the
 interactive environment do: 
     mosml -I $MUDDYHOME/muddy-sml
   
-(If the MUDDYHOME environment variable is not set, the shared library
+(If the `MUDDYHOME` environment variable is not set, the shared library
 must be placed in the dynamic library load path, controlled by the
 LD_LIBRARY_PATH environment variable, and you must still provide the
 path to the SML modules when invoking Moscow ML.  For more information
 on these matters refer to the Moscow ML documentation.)
 
 
-5.2 MuDDy-OCaml
----------------
+### 5.2 MuDDy-OCaml
 
 To build a new MuDDy enabled top level environment with MuDDy:
-  ocamlmktop -I $MUDDYHOME/muddy-ocaml muddy.cma -o ocamlmuddy
+    ocamlmktop -I $MUDDYHOME/muddy-ocaml muddy.cma -o ocamlmuddy
 
-To byte-code compile a file foo.ml that uses the MuDDy library:
-  ocamlc -I $MUDDYHOME/muddy-ocaml muddy.cma foo.ml -o foo
+To byte-code compile a file `foo.ml` that uses the MuDDy library:
+    ocamlc -I $MUDDYHOME/muddy-ocaml muddy.cma foo.ml -o foo
 
 To native-code compile a file foo.ml that uses the MuDDy library:
-  ocamlopt -I $MUDDYHOME/muddy-ocaml muddy.cmxa foo.ml -o foo
+    ocamlopt -I $MUDDYHOME/muddy-ocaml muddy.cmxa foo.ml -o foo
 
 
 
 
-==============================================================================
+----------------------------------------------------------------------------
 
 6. DOCUMENTATION
 ----------------
@@ -296,7 +281,7 @@ You should be aware, that there is the general difference between
 MuDDy and BuDDy that when you use MuDDy, reference counting of BDD
 nodes are managed automatically.
 
-Identifiers are almost equivalent between MuDDy-SML and MuDDy-OCaml!
+Identifiers are almost equivalent between MuDDy-SML and MuDDy-OCaml.
 Since SML and O'Caml disagrees about what exactly makes up an
 identifier there is however minor differences:
 
@@ -338,8 +323,7 @@ by Mike Gordon and Ken Friis Larsen.  The report is available at
 	http://www.cl.cam.ac.uk/~mjcg/BDD/#TR
 
 
-==============================================================================
-
+----------------------------------------------------------------------------
 7. EXAMPLES
 -----------
 
@@ -366,15 +350,15 @@ to make a MuDDy enabled top environment.
   
 
 
-==============================================================================
+----------------------------------------------------------------------------
 8. HISTORY AND ACKNOWLEDGEMENTS
 -------------------------------
 
 The first version of MuDDy was written by Ken Friis Larsen while
 visiting Mike Gordon at Computer Lab. at University of Cambridge (UK),
 in autumn 1997 and spring 1998.  Jakob Lichtenberg then extended MuDDy
-to cope with the new BuDDy features: Finite Domain Blocks (fdds) and
-Boolean Vectors (bvecs).  Recently (2001, 2002) we added support for
+to cope with the new BuDDy features: Finite Domain Blocks (`fdd`s) and
+Boolean Vectors (`bvec`s).  Recently (2001, 2002) we added support for
 O'Caml.
 
 It should be stressed that MuDDy is only a type safe SML wrapping
