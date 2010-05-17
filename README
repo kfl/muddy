@@ -3,12 +3,12 @@ MuDDy - ML interface to BuDDy
 -----------------------------
 
 Homepage:
-    http://www.itu.dk/research/muddy
+    http://github.com/kfl/muddy
 
 Authors:
-    Ken Friis Larsen  <kfl@itu.dk> and Jakob Lichtenberg <jl@itu.dk>
+    Ken Friis Larsen  <ken@friislarsen.net> and Jakob Lichtenberg
 
-Copyright (C) 1997-2002 by Ken Friis Larsen and Jakob Lichtenberg.
+Copyright (C) 1997-2010 by Ken Friis Larsen and Jakob Lichtenberg.
 
 
 This README file contains:
@@ -120,7 +120,7 @@ To use MuDDy-SML:
         interested if somebody wants to port MuDDy to other SML
         systems and are willing to provide information and help.)
 
-        This version of MuDDy is only tested under Moscow ML 2.00
+        This version of MuDDy is only tested under Moscow ML 2.00 and newer
         compiled with dynlib support, however, the code should work on
         version 1.44 or newer compiled with dynlib support.  Moscow ML
         is available from:
@@ -129,7 +129,8 @@ To use MuDDy-SML:
 ------------------------------------------------------------------------------
 To use MuDDy-OCaml:
 
-        We support O'Caml 3.04.  O'Caml is available from:
+        We have tested with various O'Caml versions starting from 3.04 to 3.11.1.  
+        O'Caml is available from:
               http://www.ocaml.org
 
         Windows: We have only tested the native distribution.
@@ -390,7 +391,7 @@ Damien Doligez and is available from:
     http://pauillac.inria.fr/caml/overview-caml-light-eng.html
 
 The first usage of MuDDy was in the Hol98 theorem prover.  This usage
-has influenced lots of decisions about how the interface should be.
+has influenced lots of decisions about design of the interface.
 
 We would also like to thanks the following people who have provided
 lots of good feedback and encouragement (listed in alphabetic order):
