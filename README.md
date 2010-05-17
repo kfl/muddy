@@ -29,9 +29,10 @@ This README file contains:
 MuDDy is a ML interface to the Binary Decision Diagrams package BuDDy
 written in C.  BuDDy is written by Jørn Lind-Nielsen <jln@itu.dk> and
 is available at the homepage:
-    http://www.itu.dk/research/buddy
+  http://www.itu.dk/research/buddy
+
 Newer versions are at:
-    http://sourceforge.net/projects/buddy/
+  http://sourceforge.net/projects/buddy/
 
 MuDDy is used by a small set of people, and the functionality and
 design of the interface corresponds to these people's need.  Please
@@ -53,62 +54,36 @@ And we support three platforms:
   * Linux and
   * Windows.
 
-
-The following table gives you an overview of how you can use MuDDy
-with O'Caml, MLtom and Moscow ML:
-
------------+-----------+-----------+------------------+-----------------------
-ML-dialect | Linking   | Output    | Operating System | Status
-Moscow ML  | Static    |           |                  | Not supported in mosml
-Moscow ML  | Static    |           |                  | Not supported in mosml
-Moscow ML  | Static    |           |                  | Not supported in mosml
-Moscow ML  | Static    |           |                  | Not supported in mosml
-Moscow ML  | Dynamic   | Native    |                  | Not supported in mosml
-Moscow ML  | Dynamic   | Native    |                  | Not supported in mosml
-Moscow ML  | Dynamic   | Byte-code | Linux            | Yes!
-Moscow ML  | Dynamic   | Byte-code | Windows          | Soon
-O'Caml     | Static    | Native    | Linux            | Yes!
-O'Caml     | Static    | Native    | Windows          | Soon
-O'Caml     | Static    | Byte-code | Linux            | Yes!
-O'Caml     | Static    | Byte-code | Windows          | Soon
-O'Caml     | Dynamic   | Native    | Linux            | No!
-O'Caml     | Dynamic   | Native    | Windows          | No!
-O'Caml     | Dynamic   | Byte-code | Linux            | No!
-O'Caml     | Dynamic   | Byte-code | Windows          | No!
------------+-----------+-----------+------------------+-----------------------
-
-
-
 3. REQUIREMENTS
 ---------------
 
-------------------------------------------------------------------------------
 ###On all platforms:
 
-Make:  MuDDy needs a non-broken make to install.  
+Make:  MuDDy needs a non-broken make to install.
 
-We recommend GNU make from Free Software Foundation. GNU make is included in 
-most Linux distributions, and is furthermore available from: http://www.gnu.org/software/make/make.html
+We recommend GNU make from Free Software Foundation. GNU make is included in
+most Linux distributions, and is furthermore available from:
+  http://www.gnu.org/software/make/make.html
 
 
-------------------------------------------------------------------------------
 ###On Linux platforms:
 
 MuDDy is developed under Linux and is not tested on other
 UNIX-like systems.  However, it should work without problems on
-other UNIX-like systems.  MuDDy/Mosml requires a UNIX-like system 
+other UNIX-like systems.  MuDDy/Mosml requires a UNIX-like system
 with Moscow ML dynlib support.  Please report back if you are
 able to compile MuDDy on other UNIX-like systems.
 
-------------------------------------------------------------------------------
+
 ###On Windows platform
 
-	MuDDy is (was once) tested on:
-          * Windows XP,
-          * Using Visual Studio 6 SP5 (native) (compiler: cl and linker: link)
-          * GNU Make included in CygWin
+MuDDy is (was once) tested on:
 
-------------------------------------------------------------------------------
+* Windows XP,
+* Using Visual Studio 6 SP5 (native) (compiler: cl and linker: link)
+* GNU Make included in CygWin
+
+
 ###To use MuDDy-SML:
 
 We use Moscow ML's foreign function interface to call the C functions
@@ -120,19 +95,19 @@ and help.)
 This version of MuDDy is only tested under Moscow ML 2.00 and newer
 compiled with dynlib support, however, the code should work on version
 1.44 or newer compiled with dynlib support.  Moscow ML is available
-from: 
-      http://www.dina.kvl.dk/~sestoft/mosml.html
+from:
+  http://www.dina.kvl.dk/~sestoft/mosml.html
 
-------------------------------------------------------------------------------
+
 ###To use MuDDy-OCaml:
 
 We have tested with various O'Caml versions starting from 3.04 to
-3.11.1. O'Caml is available from: 
-     http://www.ocaml.org
+3.11.1. O'Caml is available from:
+  http://www.ocaml.org
 
 Windows: We have only tested the native distribution.
 
-        
+
 4. INSTALLATION
 ---------------
 
@@ -219,7 +194,7 @@ The documentation is a README.ocaml file and three signature files:
 
 To use the MuDDy-SML package, the Moscow ML runtime system must have
 access to:
- * The shared library `muddy.so` 
+ * The shared library `muddy.so`
  * The compiled ML modules.
 
 These files are all available in the MuDDy-SML dir after build.
@@ -236,9 +211,9 @@ Or, if you use tcsh shell:
 
 Now, when you use Moscow ML you must remember to tell it where the
 compiled SML modules can found.  For example, to invoke the
-interactive environment do: 
+interactive environment do:
     mosml -I $MUDDYHOME/muddy-sml
-  
+
 (If the `MUDDYHOME` environment variable is not set, the shared library
 must be placed in the dynamic library load path, controlled by the
 LD_LIBRARY_PATH environment variable, and you must still provide the
@@ -269,9 +244,9 @@ Since MuDDy is just an interface to BuDDy, the documentation is based
 on the documentation for BuDDy, available in $MUDDYHOME/buddy/doc/buddy.ps
 
 MuDDy consists of three modules:
-    * bdd implementing the functionality of the BuDDy bdd.h header
-    * fdd implementing the functionality of the BuDDy fdd.h header
-    * bvec implementing the functionality of the BuDDy bvec.h header
+    * `bdd` implementing the functionality of the BuDDy `bdd.h` header
+    * `fdd` implementing the functionality of the BuDDy `fdd.h` header
+    * `bvec` implementing the functionality of the BuDDy `bvec.h` header
 
 Each module has a sig/mli file.  In this file you can find:
     * Short documentation of the types and values.
@@ -287,34 +262,34 @@ identifier there is however minor differences:
 
 Muddy-OCaml:  MuddySML:
 
-tt            TRUE   	     
-ff            FALSE  	     
-	      		    	     
-diff          DIFF   	     
-imp           IMP    	     
-lessth        LESSTH 	     
-biimp         BIIMP  	     
-bor           OR     	     
-invimp        INVIMP 	     
-nand          NAND   	     
-nor           NOR    	     
-band          AND    	     
-xor           XOR    	     
-	      			     
-not           NOT           
-	      		    	     
-ite           ITE           
-	      		    	     
+tt            TRUE
+ff            FALSE
+
+diff          DIFF
+imp           IMP
+lessth        LESSTH
+biimp         BIIMP
+bor           OR
+invimp        INVIMP
+nand          NAND
+nor           NOR
+band          AND
+xor           XOR
+
+not           NOT
+
+ite           ITE
+
 ordering      method      (this is a type)
-win2          WIN2          
-win2ite       WIN2ITE       
-sift          SIFT          
-siftite       SIFTITE       
-random        RANDOM        
-reorder_none  REORDER_NONE  
+win2          WIN2
+win2ite       WIN2ITE
+sift          SIFT
+siftite       SIFTITE
+random        RANDOM
+reorder_none  REORDER_NONE
 
 
-Some tutorial material is includes in 
+Some tutorial material is includes in
 
  University of Cambridge Computer Laboratory Technical Report No. 481
     Combining the Hol98 Proof Assistant with the BuDDy BDD package
@@ -335,11 +310,12 @@ you find O'Caml examples.
 
 To run the test example under MuDDy-SML, start Moscow ML in the
 $MUDDYHOME/muddy-sml/examples dir, and write:
+
     use "test.sml";
 
 Remember to follow the instructions in the STARTUP section regarding
 the MUDDYHOME variable, and the -I $MUDDYHOME directive.
-  
+
 To run the test example under MuDDy-OCaml, start your MuDDy enabled
 top environment in the $MUDDYHOME/muddy-ocaml/examples dir, and write:
 
@@ -347,7 +323,7 @@ top environment in the $MUDDYHOME/muddy-ocaml/examples dir, and write:
 
 Remember to follow the instructions in the STARTUP section to see how
 to make a MuDDy enabled top environment.
-  
+
 
 
 ----------------------------------------------------------------------------
@@ -376,14 +352,14 @@ The wrapping of C functions caused surprisingly few problems, this is
 mainly due to the magnificent designed Caml Light runtime system that
 Moscow ML is based upon.  Caml Light is created by Xavier Leroy and
 Damien Doligez and is available from:
-    http://pauillac.inria.fr/caml/overview-caml-light-eng.html
+  http://pauillac.inria.fr/caml/overview-caml-light-eng.html
 
 The first usage of MuDDy was in the Hol98 theorem prover.  This usage
 has influenced lots of decisions about design of the interface.
 
 We would also like to thanks the following people who have provided
 lots of good feedback and encouragement (listed in alphabetic order):
-    
+
     Henrik Reif Andersen (IT University of Copenhagen)
     Mike Gordon          (Computer Lab. Univerity of Cambridge (UK))
     Jesper Møller        (IT University of Copenhagen)
