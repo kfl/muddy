@@ -1,0 +1,124 @@
+# --- Your OS
+
+# Make sure OS is Windows_NT or Linux:
+ifneq ($(OS),Windows_NT)
+  OS = Linux
+else
+  OS = Windows_NT
+endif
+
+# --- Your compiler flags
+ifneq ($(OS),Windows_NT)
+  CFLAGS = -Wall -O3 -Dunix 
+  # Debug: CFLAGS = -g -ansi -Wmissing-prototypes -Wall -O3 -Dunix 
+else
+  CFLAGS = /MT /nologo /DWIN32
+  # SLAM: CFLAGS = /MDd /nologo /DWIN32
+endif
+
+# --- Where to install the library (directory, no trailing slash)
+  LIBDIR = /usr/local/lib
+
+# --- Where to install the include file (directory, no trailing slash)
+  INCDIR = /usr/local/include
+
+# --- Your C compiler
+ifneq ($(OS),Windows_NT)
+  CC = gcc
+else
+  CC = cl
+endif
+
+# --- Your C++ compiler
+ifneq ($(OS),Windows_NT)
+  CPP = g++
+else
+  CPP = cl -GX
+endif
+
+# --- Your linker
+ifneq ($(OS),Windows_NT)
+  LINK=ar rs
+else
+  LINK=lib /nologo
+endif
+
+# --- Your dynamic linker
+ifneq ($(OS),Windows_NT)
+  DYNLD=gcc -shared
+  # Some other UNIXes: DYNLD=gcc -rdynamic
+else
+  DYNLD=link /force /dll
+endif
+
+# OBJ_SUFFIX
+ifneq ($(OS),Windows_NT)
+  OBJ_SUFFIX=o
+else
+  OBJ_SUFFIX=obj
+endif
+
+# LIB_SUFFIX
+ifneq ($(OS),Windows_NT)
+  LIB_SUFFIX=a
+else
+  LIB_SUFFIX=lib
+endif
+
+# DYN_SUFFIX
+ifneq ($(OS),Windows_NT)
+  DYN_SUFFIX=so
+else
+  # Hmm, we really do not need to distinguish...
+  DYN_SUFFIX=so
+  # For classic Windows style: DYN_SUFFIX=dll
+endif
+
+# EXE_SUFFIX
+ifneq ($(OS),Windows_NT)
+  EXE_SUFFIX=
+else
+  EXE_SUFFIX=.exe
+endif
+
+
+##############################################################################
+# Where to find buddy includes and lib - relative to muddy-sml and muddy-ocaml
+BUDDYDIR=../buddy/src
+BUDDYLIB=$(BUDDYDIR)/libbdd.$(LIB_SUFFIX)
+
+##############################################################################
+# Moscow ML Specific
+# Point this to where you unpacked mosml
+# MOSMLHOME=$(HOME)/mosml
+# The 2.0 Moscow ML rpm:
+ifneq ($(OS),Windows_NT)
+  MOSMLHOME=/home/kfl/mosml
+else
+  MOSMLHOME=c:/mosml
+endif
+# The upcoming Moscow ML 2.01 standard install:
+#   MOSMLHOME=/usr/lib/mosml
+
+# I guess most of the following stuff should go to muddy/sml/Makefile:
+MOSMLBIN=$(MOSMLHOME)/bin
+#MOSMLRUNTIME=$(MOSMLHOME)/src/runtime
+MOSMLRUNTIME=$(MOSMLHOME)/include
+MOSMLTOOLS=$(MOSMLBIN)/camlrunm $(MOSMLHOME)/tools
+MOSMLC=$(MOSMLBIN)/mosmlc -c
+MOSMLL=$(MOSMLBIN)/mosmlc 
+MOSMLLEX=$(MOSMLBIN)/mosmllex
+MOSMLYACC=$(MOSMLBIN)/mosmlyac
+
+##############################################################################
+# O'Caml Specific
+ifneq ($(OS),Windows_NT)
+  CAMLRUNTIME:=$(shell ocamlopt -where)/caml
+  # Seems to not be necessary: OCAMLLIB=/usr/lib/ocaml
+else
+  CAMLRUNTIME=c:/ocaml/lib/caml
+  # Seems to not be necessary: OCAMLLIB=c:/ocaml/lib
+  # SLAM: CAMLRUNTIME=c:/slam/ocaml-3.01/lib/caml
+endif
+
+

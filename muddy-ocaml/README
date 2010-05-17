@@ -1,0 +1,51 @@
+Files:
+
+README.cuddy  this file, temporary?
+cuddy.sh      Makefile replacement, temporary
+cuddy_test.ml temporary
+muddycore.ml  
+bdd.ml
+bdd.mli
+
+Files to appear:
+fdd.ml
+fdd.mli
+bvec.ml
+bvic.mli
+
+
+==============================================================================
+
+ToDo:
+make Makefile
+Discuss naming convention for files, values, types with Ken
+Exceptions.  Use Invalid_arguments in O'Caml. SML Fail?
+build muddy on Windows: iss-file?, msdev?
+Exception not translated correctly...
+Check make_* functions.  Make them work similary to make_bdd?
+==============================================================================
+Porting decisions:
+
+bdd.sig -> bdd.mli
+* Vector.vector is implemented as an array
+* MuddyCore.sml -> muddycore.ml
+* bdd.sig -> bdd.mli
+* bdd.sml -> bdd.ml
+* Mosml identifiers that is not OCaml identifiers has a _ prepended.
+* Capitals identifiers (DIFF) has a _ prepended (_DIFF)
+* datatype -> type
+* eqtype -> type
+* float -> real
+* extra type: Bdd.stats
+
+bdd.sml -> bdd.ml
+* prim_type -> type
+* pattern matching in function heads removed
+* appi and symb removed, instead "external"
+* array -> array
+
+bdd.sig -> new bdd.sig
+
+Use custom blocks instead of finalized blocks.  This means that hash
+and compare works in O'Caml (but not [de]serialize).
+

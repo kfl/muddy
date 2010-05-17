@@ -1,0 +1,31 @@
+Changes since Muddy 2.0
+
+* We don't use the Domain expection anymore instead we raises Fail
+  with a small explanation
+
+* Bug fixes:
+  + bdd.verbosegc works now
+  + bvec.div* are no longer broken beyond belief
+
+----------------------------------------------------------------------
+Changes in Muddy 2.0, we forgot to put in the original Changes list
+
+* Removed the joingc function - not supported by the Caml runtime.
+
+* Bug fixes.
+----------------------------------------------------------------------
+Changes since Muddy 1.7
+
+* Upgraded to use and include Buddy 2.0.
+
+* Upgraded to use Moscow ML 2.00, should still work with Moscow ML 1.44.
+
+* Works on Windows.
+
+* Rename of the type restriction to assignment.
+
+* New function satone that returns a satisfying assigment.  Destructor
+  for assignments: getAssignment.
+
+* bvec changed to reflect changed in Buddy 2.0.
+----------------------------------------------------------------------

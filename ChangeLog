@@ -1,0 +1,104 @@
+----------------------------------------------------------------------
+Changes for upcoming MuDDy release
+
+
+2002-03-18: muddy.c: only print greeting in debug mode.
+	
+---
+
+README.ocaml and README.sml added, README.cuddy deleted, contents NOT
+updated yet.
+
+---
+
+All headers are now with one decription line and one copyright line a'la:
+(* Structure MuddyCore provides internals for the MuDDy BDD ML Interface.    *)
+(* Copyright (C) 1997-2002 by Ken Friis Larsen and Jakob Lichtenberg.        *)
+
+---
+
+jl: muddy.c: Windows's native compiler seems not to accept inline (or,
+we do not know how to use cl correctty), hence inline is now INLINE,
+and is #define'd in a #ifdef WIN32 section.
+
+---
+
+jl: Identifiers in bdd.sig: All identifiers are now equivalent between
+SML and O'Caml!  Since SML and O'Caml disagrees about what exactly
+makes up an identifier this has led to some changes in the SML
+interface bdd.sig (bvec.sig and fdd.sig is unchanged):
+
+1. true and false ( tt and ff are pragmatic names often used when
+dealing with bdds):
+
+TRUE is now tt
+FALSE is now ff
+
+3. bdd operations have been lowercased to suit OCaml:
+
+DIFF   is now diff
+IMP    is now imp
+LESSTH is now lessth
+BIIMP  is now biimp
+OR     is now bor     (* short for bdd or *)
+INVIMP is now invimp
+NAND   is now nand
+NOR    is now nor
+AND    is now band    (* short for bdd and *)
+XOR    is now xor
+
+NOT    is now not
+
+ITE    is now ite
+
+4. method datatype changed (method is an OCaml keywork)
+
+    eqtype method
+    val WIN2         : method
+    val WIN2ITE      : method
+    val SIFT         : method
+    val SIFTITE      : method
+    val RANDOM       : method
+    val REORDER_NONE : method
+
+is now:
+
+    eqtype ordering
+    val win2         : ordering
+    val win2ite      : ordering
+    val sift         : ordering
+    val siftite      : ordering
+    val random       : ordering
+    val reorder_none : ordering
+
+
+5. A new type stats is added (since OCaml records in signatures needs
+to be named)
+
+6. To ensure easy adaption of this release all old identifiers are
+'aliased' to their new name in the bottom of bdd.sig in the style
+   val WIN2 = win2
+
+
+---
+
+jl: Documentation, generally: Documentation in the bottom of X.sig and
+X.mli is now equivalent, (where X is bdd, fdd and bvec).  I have plans
+of adopting ocamldoc documentation style, but that obviously conflicts
+with Mosml style....  Advice requested.
+
+Documentation in bdd.sig is updated.  There is still a few forward
+pointers to the BuDDy manual, but we are getting there...Documentation
+for fdd and bvec is still - very - sparse.
+
+---
+jl: bvec.sig, bvec.sml fdd.sig bvec.sml are updated.
+
+---
+jl: bvec.mli, bvev.ml, fdd.mli, fdd.ml are implemented.
+
+---
+
+cuddy_test.ml is deleted
+
+----------------------------------------------------------------------
