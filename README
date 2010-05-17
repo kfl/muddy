@@ -46,17 +46,18 @@ interface.
 2. ML IMPLEMENTATIONS AND PLATFORMS
 -----------------------------------
 
-From MuDDy 2.01 we support two ML implementations:
-  * MuDDy-SML is the Moscow ML SML interface and
+From MuDDy 2.01 we support three ML implementations:
+  * MuDDy-SML is the Moscow ML and MLton SML interface and
   * the MuDDy-OCaml is the O'Caml interface.
 
-And we support two platforms:
+And we support three platforms:
+  * Mac OS-X
   * Linux and
   * Windows.
 
 
-The following table gives you an exact picture of how you can use
-MuDDy with O'Caml and Moscow ML:
+The following table gives you an overview of how you can use MuDDy
+with O'Caml, MLtom and Moscow ML:
 
 ------------------------------------------------------------------------------
 ML-dialect | Linking   | Output    | Operating System | Status
@@ -88,9 +89,10 @@ O'Caml     | Dynamic   | Byte-code | Windows          | No!
 ------------------------------------------------------------------------------
 On all platforms:
 
-Make:  MuDDy needs a non-broken make to install.  We recommend GNU make
-       from Free Software Foundation. GNU make is included in most
-       Linux distributions, and is furthermore available from:
+Make:  MuDDy needs a non-broken make to install.  
+
+We recommend GNU make from Free Software Foundation. GNU make is included in 
+most Linux distributions, and is furthermore available from:
 	      http://www.gnu.org/software/make/make.html
 
 
@@ -106,7 +108,7 @@ On Linux platforms:
 ------------------------------------------------------------------------------
 On Windows platform
 
-	MuDDy is tested on:
+	MuDDy is (was once) tested on:
           * Windows XP,
           * Using Visual Studio 6 SP5 (native) (compiler: cl and linker: link)
           * GNU Make included in CygWin
@@ -114,26 +116,26 @@ On Windows platform
 ------------------------------------------------------------------------------
 To use MuDDy-SML:
 
-        We use Moscow ML's foreign function interface to call the C
-        functions in BuDDy.  Therefore, MuDDy can only be used with
-        Moscow ML (version 1.44 or newer).  (However, we are very
-        interested if somebody wants to port MuDDy to other SML
-        systems and are willing to provide information and help.)
+We use Moscow ML's foreign function interface to call the C functions
+in BuDDy.  Therefore, MuDDy can only be used with Moscow ML (version
+1.44 or newer).  (However, we are very interested if somebody wants to
+port MuDDy to other SML systems and are willing to provide information
+and help.)
 
-        This version of MuDDy is only tested under Moscow ML 2.00 and newer
-        compiled with dynlib support, however, the code should work on
-        version 1.44 or newer compiled with dynlib support.  Moscow ML
-        is available from:
-	      http://www.dina.kvl.dk/~sestoft/mosml.html
+This version of MuDDy is only tested under Moscow ML 2.00 and newer
+compiled with dynlib support, however, the code should work on version
+1.44 or newer compiled with dynlib support.  Moscow ML is available
+from: 
+      http://www.dina.kvl.dk/~sestoft/mosml.html
 
 ------------------------------------------------------------------------------
 To use MuDDy-OCaml:
 
-        We have tested with various O'Caml versions starting from 3.04 to 3.11.1.  
-        O'Caml is available from:
-              http://www.ocaml.org
+We have tested with various O'Caml versions starting from 3.04 to
+3.11.1. O'Caml is available from: 
+     http://www.ocaml.org
 
-        Windows: We have only tested the native distribution.
+Windows: We have only tested the native distribution.
 
         
 ==============================================================================
