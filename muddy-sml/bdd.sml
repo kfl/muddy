@@ -22,6 +22,13 @@ struct
        * int * int * int * int * int
 
      
+    type root = bdd 
+    fun withRoot(b, f) = f b
+    fun create r = r
+
+    type bddPair = pairSet
+    fun withNewPair f = raise Fail"Don't use withNewPair with mosml"
+
     open MuddyCore
     fun failwith s = raise Fail s
 
@@ -53,8 +60,6 @@ struct
 	                                  = app4 (symb "mlbdd_bdd_appall")
     val appex_ : bdd -> bdd -> int -> varSet -> bdd
 	                                  = app4 (symb "mlbdd_bdd_appex")
-
-    val mkset_ : varnum vector -> varSet  = app1 (symb "mlbdd_makeset")
 
 
     val stats_ : unit -> int * int * int * int * int * int * int * int 
@@ -89,6 +94,8 @@ struct
 
     val TRUE = fromBool true
     val FALSE = fromBool false
+
+    val trueroot = TRUE
 
     val equal : bdd -> bdd -> bool = app2 (symb "mlbdd_equal")
 
@@ -137,21 +144,6 @@ struct
 	     gbcnum       = gn}
 	end
 
-    fun makeset_ vector = if Vector.length vector = 0 then (*Obj.magic*) FALSE
-			  else mkset_ vector
-
-    fun nodup _ nil                   = nil
-      | nodup pre (h :: tail) = if pre = h then nodup pre tail
-					else h :: nodup h tail
-    fun makeset varlist =
-	let val positive = List.filter (fn i => i >= 0) varlist
-	    val sorted = Listsort.sort Int.compare positive
-	    val nodup  = case sorted of
-		             nil => nil
-			   | h :: tail => h :: nodup h tail
-	in
-	    makeset_ (Vector.fromList(nodup))
-	end 
 
     val scanset : varSet -> varnum vector = app1 (symb "mlbdd_bdd_scanset")
 
@@ -181,6 +173,28 @@ struct
     fun DIFF   (r1, r2) = apply_ r1 r2 bddop_diff
     fun LESSTH (r1, r2) = apply_ r1 r2 bddop_less
     fun INVIMP (r1, r2) = apply_ r1 r2 bddop_invimp
+
+    fun makesetV vector = if Vector.length vector = 0 then FALSE
+			  else Vector.foldl (fn(i, res) => AND(ithvar i, res))
+                                            TRUE vector
+
+
+    fun nodup _ nil                   = nil
+      | nodup pre (h :: tail) = if pre = h then nodup pre tail
+					else h :: nodup h tail
+    fun makeset varlist =
+	let val positive = List.filter (fn i => i >= 0) varlist
+	    val sorted = Listsort.sort Int.compare positive
+	    val nodup  = case sorted of
+		             nil => nil
+			   | h :: tail => h :: nodup h tail
+	in
+	    makesetV (Vector.fromList nodup)
+	end 
+
+    fun makeset [] = FALSE
+      | makeset vs = List.foldl (fn(i, res) => AND(ithvar i, res))
+                                TRUE vs
 
     val replace : bdd -> pairSet -> bdd = app2 (symb "mlbdd_bdd_replace")
 
@@ -277,6 +291,9 @@ struct
     (* BuDDy tuning stuff *)
     val setMaxincrease : int -> int = app1 (symb "mlbdd_bdd_setmaxincrease")
     val setCacheratio  : int -> int = app1 (symb "mlbdd_bdd_setcacheratio")
+
+    fun gcRatio x = x
+
 
     val setprintgc : bool -> string -> string -> unit =
 	app3 (symb "mlbdd_setprintgc")

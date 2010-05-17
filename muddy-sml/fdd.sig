@@ -14,9 +14,11 @@ sig
     val varNum: fddvar -> precision
     val vars: fddvar -> bdd.varnum list
     val ithSet: fddvar -> bdd.varSet
+    val ithvar : fddvar -> int -> bdd.bdd
+    val equals  : fddvar -> fddvar -> bdd.bdd
     val domain: fddvar -> bdd.bdd
     val setPairs: (fddvar * fddvar) list -> bdd.pairSet
-    val scanallvars: (fddvar * int * bdd.bdd) -> int vector option
+    val scanallvars: fddvar * int * bdd.bdd -> int vector option
     val addvarblock : fddvar -> fddvar -> bdd.fixed -> unit
 end
 

@@ -1,0 +1,14 @@
+$(SML_LIB)/basis/basis.mlb
+local
+  $(SML_LIB)/basis/mlton.mlb  
+  Finalizable-mlton.sml
+  FinalizableXP.sig
+  FinalizableXP.sml
+in
+  bdd.sig
+  bdd-mlton.sml
+  fdd.sig
+  fdd-mlton.sml
+  bvec.sig
+  bvec-mlton.sml
+end

@@ -13,26 +13,29 @@ struct
     val extDomain_ : int vector -> fddvar = app1 (symb "mlfdd_extdomain") 
 	    
     fun mkList(start, stop) = 
-            if start > stop then []
-	    else start::mkList(start+1, stop)
+        if start > stop then []
+	else start::mkList(start+1, stop)
 
     fun extDomain l = 
-	    let val i = extDomain_ (Vector.fromList(l))
-	    in mkList(i,i-1+List.length l) end
+	let val i = extDomain_ (Vector.fromList l)
+	in mkList(i,i-1+List.length l) end
 
     val clearAll: unit -> unit = app1 (symb "mlfdd_clearall") 
     val domainNum: unit -> int = app1 (symb "mlfdd_domainnum") 
     val domainSize: fddvar -> int = app1 (symb "mlfdd_domainsize") 
     val varNum: fddvar -> int = app1 (symb "mlfdd_varnum") 
 	
+
+    val ithvar : fddvar -> int -> bdd.bdd = app2 (symb "mlfdd_ithvar")
+    val equals : fddvar -> fddvar -> bdd.bdd = app2 (symb "mlfdd_equals")
+
+
     fun vectorToList v = Vector.foldl op:: nil v
 
     fun compose__ f g = (fn x => f(g(x)))
 
-    val vars__: fddvar -> bdd.varnum Vector.vector =
-	app1 (symb "mlfdd_vars") 
-    val vars: fddvar -> bdd.varnum list = 
-	    compose__ vectorToList vars__
+    val vars__: fddvar -> bdd.varnum Vector.vector = app1 (symb "mlfdd_vars") 
+    fun vars var = vectorToList(vars__ var)
 
     val ithSet: fddvar -> bdd.varSet = app1 (symb "mlfdd_ithset")
     val domain: fddvar -> bdd.bdd = app1 (symb "mlfdd_domain")

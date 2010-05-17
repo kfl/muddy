@@ -1,10 +1,10 @@
 (* Structure bdd is the core structure of the MuDDy BDD ML Interface.        *)
-(* Copyright (C) 1997-2002 by Ken Friis Larsen and Jakob Lichtenberg.        *)
+(* Copyright (C) 1997-2003 by Ken Friis Larsen and Jakob Lichtenberg.        *)
 
 signature bdd =
 sig
     (* Basic types: *)
-    type bdd
+    type bdd         
     type varnum = int
 
 
@@ -44,11 +44,11 @@ sig
     val IMP    : bdd * bdd -> bdd
     val LESSTH : bdd * bdd -> bdd
     val BIIMP  : bdd * bdd -> bdd
-    val OR    : bdd * bdd -> bdd
+    val OR     : bdd * bdd -> bdd
     val INVIMP : bdd * bdd -> bdd
     val NAND   : bdd * bdd -> bdd
     val NOR    : bdd * bdd -> bdd
-    val AND   : bdd * bdd -> bdd
+    val AND    : bdd * bdd -> bdd
     val XOR    : bdd * bdd -> bdd
 
     val NOT : bdd -> bdd
@@ -59,7 +59,7 @@ sig
     (* Quantification: *)
     type varSet
     val makeset  : varnum list -> varSet
-    val makeset_ : varnum vector -> varSet
+    val makesetV : varnum vector -> varSet
     val scanset  : varSet -> varnum vector
     val fromSet  : varSet -> bdd
     val toSet_   : bdd -> varSet
@@ -154,6 +154,7 @@ sig
     (* More administration *)
     val setMaxincrease : int -> int
     val setCacheratio  : int -> int
+    val gcRatio        : int option -> int option
     val verbosegc      : (string * string) option -> unit
 
     type stats = {produced     : int,
@@ -194,6 +195,15 @@ sig
     val siftite      : method
     val random       : method
     val reorder_none : method
+
+    (* Used for breaking the bdd abstraction in controled manner.  For
+       internal use in fdd and bvec.  
+    *)
+    type root
+    type bddPair
+    val withRoot : bdd * (root -> 'a) -> 'a
+    val create   : root -> bdd
+    val withNewPair : (bddPair -> unit) -> pairSet
 
 end
 
@@ -315,12 +325,8 @@ end
    or negative numbers.  Duplets and negative numbers will just be
    filtered out.
 
-   [makeset_ varvector] makes the varSet with the elements in
-   varvector.  There are many constraints on varvector: it must be
-   sorted in increasing order, it may not contain duplets nor negative
-   numbers.  This function is more effictive than makeset, but it is
-   highly unsafe and you should only use it when you can guarantee
-   that the input satisfies the constraints.
+   [makesetV varvector] makes the varSet with the elements in
+   varvector.
 
    [scanset varset] gives the vector of the variables in varset.
 
