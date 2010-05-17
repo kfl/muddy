@@ -244,49 +244,49 @@ Since MuDDy is just an interface to BuDDy, the documentation is based
 on the documentation for BuDDy, available in $MUDDYHOME/buddy/doc/buddy.ps
 
 MuDDy consists of three modules:
-    * `bdd` implementing the functionality of the BuDDy `bdd.h` header
-    * `fdd` implementing the functionality of the BuDDy `fdd.h` header
-    * `bvec` implementing the functionality of the BuDDy `bvec.h` header
+  * `bdd` implementing the functionality of the BuDDy `bdd.h` header
+  * `fdd` implementing the functionality of the BuDDy `fdd.h` header
+  * `bvec` implementing the functionality of the BuDDy `bvec.h` header
 
 Each module has a sig/mli file.  In this file you can find:
-    * Short documentation of the types and values.
-    * A comparison to the BuDDy C types and function declarations.
+  * Short documentation of the types and values.
+  * A comparison to the BuDDy C types and function declarations.
 
 You should be aware, that there is the general difference between
 MuDDy and BuDDy that when you use MuDDy, reference counting of BDD
 nodes are managed automatically.
 
-Identifiers are almost equivalent between MuDDy-SML and MuDDy-OCaml.
-Since SML and O'Caml disagrees about what exactly makes up an
-identifier there is however minor differences:
+Identifiers are almost the same in MuDDy-SML and MuDDy-OCaml.
+However, since SML and O'Caml disagrees about what exactly makes up an
+identifier there are some minor differences:
 
-Muddy-OCaml:  MuddySML:
+    MuDDy-OCaml:  MuDDy-SML:
 
-tt            TRUE
-ff            FALSE
-
-diff          DIFF
-imp           IMP
-lessth        LESSTH
-biimp         BIIMP
-bor           OR
-invimp        INVIMP
-nand          NAND
-nor           NOR
-band          AND
-xor           XOR
-
-not           NOT
-
-ite           ITE
-
-ordering      method      (this is a type)
-win2          WIN2
-win2ite       WIN2ITE
-sift          SIFT
-siftite       SIFTITE
-random        RANDOM
-reorder_none  REORDER_NONE
+    tt            TRUE
+    ff            FALSE
+     
+    diff          DIFF
+    imp           IMP
+    lessth        LESSTH
+    biimp         BIIMP
+    bor           OR
+    invimp        INVIMP
+    nand          NAND
+    nor           NOR
+    band          AND
+    xor           XOR
+    
+    not           NOT
+    
+    ite           ITE
+    
+    ordering      method      (this is a type)
+    win2          WIN2
+    win2ite       WIN2ITE
+    sift          SIFT
+    siftite       SIFTITE
+    random        RANDOM
+    reorder_none  REORDER_NONE
 
 
 Some tutorial material is includes in
@@ -341,8 +341,7 @@ It should be stressed that MuDDy is only a type safe SML wrapping
 around Jørn Lind-Nielsen's <jln@itu.dk> great BuDDy package, and that
 all the "hard work" is done by the BuDDy package.  Jørn Lind-Nielsen
 has answered lots of BuDDy questions (and BDD questions), and have
-been willing to change the BuDDy package to make the SML wrapping more
-easy.
+been willing to change the BuDDy package to make the SML wrapping easier.
 
 A special thanks should also go to Peter Sestoft who have answered
 tons of questions about the Moscow ML/Caml Light runtime system, and
