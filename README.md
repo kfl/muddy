@@ -289,14 +289,15 @@ identifier there are some minor differences:
     reorder_none  REORDER_NONE
 
 
-Some tutorial material is includes in
+Some tutorial material is includes in:
 
- University of Cambridge Computer Laboratory Technical Report No. 481
-    Combining the Hol98 Proof Assistant with the BuDDy BDD package
+* University of Cambridge Computer Laboratory Technical Report No. 481 
+  _Combining the Hol98 Proof Assistant with the BuDDy BDD package_
+  by Mike Gordon and Ken Friis Larsen.  The report is available at 
+  http://www.cl.cam.ac.uk/~mjcg/BDD/#TR
 
-by Mike Gordon and Ken Friis Larsen.  The report is available at
-	http://www.cl.cam.ac.uk/~mjcg/BDD/#TR
-
+* _A MuDDy Experience–ML Bindings to a BDD Library_ by Ken Friis Larsen.
+  Available from: http://www.springerlink.com/content/07618767282187nv/
 
 ----------------------------------------------------------------------------
 7. EXAMPLES
