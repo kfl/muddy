@@ -159,7 +159,7 @@ The documentation is a README.sml file and three signature files:
     muddy-sml/examples
 
 
-------------------------------------------------------------------------------
+
 ### 4.4 Building MuDDy-OCaml (optional)
 
 After BuDDy is build you can build MuDDy-OCaml:
@@ -233,10 +233,6 @@ To native-code compile a file foo.ml that uses the MuDDy library:
     ocamlopt -I $MUDDYHOME/muddy-ocaml muddy.cmxa foo.ml -o foo
 
 
-
-
-----------------------------------------------------------------------------
-
 6. DOCUMENTATION
 ----------------
 
@@ -244,20 +240,22 @@ Since MuDDy is just an interface to BuDDy, the documentation is based
 on the documentation for BuDDy, available in $MUDDYHOME/buddy/doc/buddy.ps
 
 MuDDy consists of three modules:
+
   * `bdd` implementing the functionality of the BuDDy `bdd.h` header
   * `fdd` implementing the functionality of the BuDDy `fdd.h` header
   * `bvec` implementing the functionality of the BuDDy `bvec.h` header
 
 Each module has a sig/mli file.  In this file you can find:
+
   * Short documentation of the types and values.
   * A comparison to the BuDDy C types and function declarations.
 
 You should be aware, that there is the general difference between
 MuDDy and BuDDy that when you use MuDDy, reference counting of BDD
-nodes are managed automatically.
+nodes is managed automatically.
 
 Identifiers are almost the same in MuDDy-SML and MuDDy-OCaml.
-However, since SML and O'Caml disagrees about what exactly makes up an
+However, since SML and O'Caml disagrees about what is a valid
 identifier there are some minor differences:
 
     MuDDy-OCaml:  MuDDy-SML:
@@ -299,7 +297,6 @@ Some tutorial material is includes in:
 * _A MuDDy Experience–ML Bindings to a BDD Library_ by Ken Friis Larsen.
   Available from: http://www.springerlink.com/content/07618767282187nv/
 
-----------------------------------------------------------------------------
 7. EXAMPLES
 -----------
 
@@ -326,8 +323,6 @@ Remember to follow the instructions in the STARTUP section to see how
 to make a MuDDy enabled top environment.
 
 
-
-----------------------------------------------------------------------------
 8. HISTORY AND ACKNOWLEDGEMENTS
 -------------------------------
 
@@ -335,8 +330,7 @@ The first version of MuDDy was written by Ken Friis Larsen while
 visiting Mike Gordon at Computer Lab. at University of Cambridge (UK),
 in autumn 1997 and spring 1998.  Jakob Lichtenberg then extended MuDDy
 to cope with the new BuDDy features: Finite Domain Blocks (`fdd`s) and
-Boolean Vectors (`bvec`s).  Recently (2001, 2002) we added support for
-O'Caml.
+Boolean Vectors (`bvec`s).  In 2001-2002 we added support for O'Caml.
 
 It should be stressed that MuDDy is only a type safe SML wrapping
 around Jørn Lind-Nielsen's <jln@itu.dk> great BuDDy package, and that
@@ -346,7 +340,7 @@ been willing to change the BuDDy package to make the SML wrapping easier.
 
 A special thanks should also go to Peter Sestoft who have answered
 tons of questions about the Moscow ML/Caml Light runtime system, and
-he even audited the C code at one point to help finding a bug.
+he even audited the C code at one point to help us finding a bug.
 
 The wrapping of C functions caused surprisingly few problems, this is
 mainly due to the magnificent designed Caml Light runtime system that
