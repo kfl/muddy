@@ -2,10 +2,10 @@ MuDDy - ML interface to BuDDy
 =============================
 
 Homepage:
-    http://github.com/kfl/muddy
+  http://github.com/kfl/muddy
 
 Authors:
-    Ken Friis Larsen  <ken@friislarsen.net> and Jakob Lichtenberg
+  Ken Friis Larsen  <ken@friislarsen.net> and Jakob Lichtenberg
 
 Copyright (C) 1997-2010 by Ken Friis Larsen and Jakob Lichtenberg.
 
@@ -27,8 +27,8 @@ This README file contains:
 ----------------
 
 MuDDy is a ML interface to the Binary Decision Diagrams package BuDDy
-written in C.  BuDDy is written by Jørn Lind-Nielsen <jln@itu.dk> and
-is available at the homepage:
+written in C.  BuDDy is written by Jørn Lind-Nielsen and is available
+at the homepage: 
   http://www.itu.dk/research/buddy
 
 Newer versions are at:
@@ -46,10 +46,12 @@ interface.
 -----------------------------------
 
 From MuDDy 2.01 we support three ML implementations:
+ 
   * MuDDy-SML is the Moscow ML and MLton SML interface and
   * the MuDDy-OCaml is the O'Caml interface.
 
 And we support three platforms:
+
   * Mac OS-X
   * Linux and
   * Windows.
@@ -330,17 +332,20 @@ The first version of MuDDy was written by Ken Friis Larsen while
 visiting Mike Gordon at Computer Lab. at University of Cambridge (UK),
 in autumn 1997 and spring 1998.  Jakob Lichtenberg then extended MuDDy
 to cope with the new BuDDy features: Finite Domain Blocks (`fdd`s) and
-Boolean Vectors (`bvec`s).  In 2001-2002 we added support for O'Caml.
+Boolean Vectors (`bvec`s).  In 2001-2002 we added support for
+O'Caml. In 2003 Ken Friis Larsen added support for MLton while
+visiting Oege de Moor and Ganesh Sittampalam at Oxford University
+Computing Laboratory.
 
 It should be stressed that MuDDy is only a type safe SML wrapping
-around Jørn Lind-Nielsen's <jln@itu.dk> great BuDDy package, and that
-all the "hard work" is done by the BuDDy package.  Jørn Lind-Nielsen
-has answered lots of BuDDy questions (and BDD questions), and have
-been willing to change the BuDDy package to make the SML wrapping easier.
+around Jørn Lind-Nielsen's great BuDDy package, and that all the "hard
+work" is done by the BuDDy package.  Jørn Lind-Nielsen has answered
+lots of BuDDy questions (and BDD questions), and have been willing to
+change the BuDDy package to make the SML wrapping easier.
 
 A special thanks should also go to Peter Sestoft who have answered
 tons of questions about the Moscow ML/Caml Light runtime system, and
-he even audited the C code at one point to help us finding a bug.
+he even audited the C code at one point to help us find a bug.
 
 The wrapping of C functions caused surprisingly few problems, this is
 mainly due to the magnificent designed Caml Light runtime system that
