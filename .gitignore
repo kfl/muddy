@@ -1,0 +1,10 @@
+*~
+*.ui
+*.uo
+/buddy
+/buddy-2.4
+/muddy-sml/muddy.o
+/muddy-sml/muddy.so
+
+/muddy-sml/tests/simpletest
+/muddy-sml/tests/simpletest.out

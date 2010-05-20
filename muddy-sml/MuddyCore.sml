@@ -6,8 +6,7 @@ open Dynlib
 local
   val muddylibname="muddy.so"
   val path = case Process.getEnv "MUDDYHOME" of
-                SOME p => Path.concat (p, 
-				       Path.concat ("muddy-sml", muddylibname))
+                SOME p => Path.concat (p, muddylibname)
               | NONE   => muddylibname
 	
   val hdl  = dlopen {lib = path, flag = RTLD_NOW, global = false}
