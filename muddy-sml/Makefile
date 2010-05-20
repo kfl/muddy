@@ -19,14 +19,20 @@ CC=gcc
 
 ## For Mac OS X the following works
 LD=gcc -Wl,-rpath -Wl,${MOSMLHOME}/lib
-DYNLD=gcc -bundle -undefined dynamic_lookup -bundle_loader ${MOSMLHOME}/bin/camlrunm
+DYNLD=gcc -bundle -undefined dynamic_lookup
 
 
 #### If everything goes well you shouldn't need to change anything below here
 OPTS=-Wall -O3
-CINCLUDE=-I$(MOSMLRUNTIME) -I$(BUDDYDIR)/include
 CFLAGS=$(OSFLAGS) $(OPTS) $(CINCLUDE)
-#LIBS=$(EXTRALIBS)
+
+ifdef ($BUDDYDIR)
+  LIBS=-L$(BUDDYDIR)/lib -lbdd
+  CINCLUDE=-I$(MOSMLRUNTIME)
+else
+  BUDDYSTATICLIB=$(BUDDYDIR)/lib/libbdd.a
+  CINCLUDE=-I$(MOSMLRUNTIME) -I$(BUDDYDIR)/include
+endif
 
 MOSMLBIN=$(MOSMLHOME)/bin
 #MOSMLRUNTIME=$(MOSMLHOME)/src/runtime
@@ -40,10 +46,8 @@ MOSMLYACC=$(MOSMLBIN)/mosmlyac
 CFILES=muddy.c
 COBJS=muddy.o
 
-BUDDYSTATICLIB=$(BUDDYDIR)/lib/libbdd.a
-
 SMLS=MuddyCore.sml bdd.sml bvec.sml fdd.sml
-SIGS=bdd.sig  bvec.sig  fdd.sig
+SIGS=bdd.sig bvec.sig fdd.sig
 
 SMLSRC=$(SMLLS)
 SIGSRC=$(SIGLS)
@@ -65,15 +69,12 @@ muddy.c: ../muddy.c
 	@chmod a-w muddy.c
 
 muddy-mlton.o: muddy-mlton.c 
-	mlton -stop o -cc-opt -g -cc-opt -I./$(BUDDYDIR)/include muddy-mlton.c
+	mlton -stop o -cc-opt -g -cc-opt -I$(BUDDYDIR)/include muddy-mlton.c
 
 muddy-mosml: $(SMLOBJ) $(SIGOBJ) muddy.so
 
 muddy.so: $(COBJS)
 	$(DYNLD) -o $@ $(COBJS) $(BUDDYSTATICLIB) $(LIBS)
-
-$(BUDDYLIB):
-	cd $(BUDDYDIR); make
 
 .sig.ui:
 	$(MOSMLC) $<
@@ -89,7 +90,8 @@ clean:
 	rm -f *.o *.so
 	rm -f Makefile.bak
 	rm -f muddy-stamp
-	cd $(BUDDYDIR); make clean
+#	cd $(BUDDYDIR); make clean
+	cd tests; make clean
 	cd examples; make clean
 
 depend : 
