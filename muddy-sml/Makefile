@@ -11,15 +11,18 @@ MOSMLHOME=$(HOME)/projects/mosml2.10
 BUDDYDIR=$(HOME)/projects/muddy/buddy
 
 ###
-# Your C compiler
-CC=gcc
+# How to link and compile C on your platform
 
-####
-# How to link on your platform
+## For Linux the following works
+#CC=gcc
+#LD=gcc -rdynamic
+#DYNLD=gcc -shared
 
 ## For Mac OS X the following works
+CC=gcc
 LD=gcc -Wl,-rpath -Wl,${MOSMLHOME}/lib
 DYNLD=gcc -bundle -undefined dynamic_lookup
+
 
 
 #### If everything goes well you shouldn't need to change anything below here
