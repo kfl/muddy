@@ -2,10 +2,10 @@ MuDDy - ML interface to BuDDy
 =============================
 
 Homepage:
-  http://github.com/kfl/muddy
+  <http://github.com/kfl/muddy>
 
 Authors:
-  Ken Friis Larsen  <ken@friislarsen.net> and Jakob Lichtenberg
+  Ken Friis Larsen and Jakob Lichtenberg
 
 Copyright (C) 1997-2010 by Ken Friis Larsen and Jakob Lichtenberg.
 
@@ -29,10 +29,10 @@ This README file contains:
 MuDDy is a ML interface to the Binary Decision Diagrams package BuDDy
 written in C.  BuDDy is written by Jørn Lind-Nielsen and is available
 at the homepage: 
-  http://www.itu.dk/research/buddy
+  <http://www.itu.dk/research/buddy>
 
 Newer versions are at:
-  http://sourceforge.net/projects/buddy/
+  <http://sourceforge.net/projects/buddy/>
 
 MuDDy is used by a small set of people, and the functionality and
 design of the interface corresponds to these people's need.  Please
@@ -65,7 +65,7 @@ Make:  MuDDy needs a non-broken make to install.
 
 We recommend GNU make from Free Software Foundation. GNU make is included in
 most Linux distributions, and is furthermore available from:
-  http://www.gnu.org/software/make/make.html
+  <http://www.gnu.org/software/make/make.html>
 
 
 ###On Linux platforms:
@@ -98,14 +98,14 @@ This version of MuDDy is only tested under Moscow ML 2.00 and newer
 compiled with dynlib support, however, the code should work on version
 1.44 or newer compiled with dynlib support.  Moscow ML is available
 from:
-  http://www.dina.kvl.dk/~sestoft/mosml.html
+  <http://www.itu.dk/~sestoft/mosml.html>
 
 
 ###To use MuDDy-OCaml:
 
 We have tested with various O'Caml versions starting from 3.04 to
 3.11.1. O'Caml is available from:
-  http://www.ocaml.org
+  <http://www.ocaml.org>
 
 Windows: We have only tested the native distribution.
 
@@ -294,10 +294,10 @@ Some tutorial material is includes in:
 * University of Cambridge Computer Laboratory Technical Report No. 481 
   _Combining the Hol98 Proof Assistant with the BuDDy BDD package_
   by Mike Gordon and Ken Friis Larsen.  The report is available at 
-  http://www.cl.cam.ac.uk/~mjcg/BDD/#TR
+  <http://www.cl.cam.ac.uk/~mjcg/BDD/#TR>
 
 * _A MuDDy Experience–ML Bindings to a BDD Library_ by Ken Friis Larsen.
-  Available from: http://www.springerlink.com/content/07618767282187nv/
+  Available from: <http://www.springerlink.com/content/07618767282187nv/>
 
 7. EXAMPLES
 -----------
@@ -351,7 +351,7 @@ The wrapping of C functions caused surprisingly few problems, this is
 mainly due to the magnificent designed Caml Light runtime system that
 Moscow ML is based upon.  Caml Light is created by Xavier Leroy and
 Damien Doligez and is available from:
-  http://pauillac.inria.fr/caml/overview-caml-light-eng.html
+  <http://pauillac.inria.fr/caml/overview-caml-light-eng.html>
 
 The first usage of MuDDy was in the Hol98 theorem prover.  This usage
 has influenced lots of decisions about design of the interface.
